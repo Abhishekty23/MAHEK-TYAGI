@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Mahek ❤️</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom right, #ffb6c1, #ff69b4);
+        font-family: "Segoe UI", sans-serif;
+        color: #fff;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      #entryBox {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        color: #ff69b4;
+        box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+      }
+      #entryBox input {
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+      #entryBox button {
+        padding: 10px 15px;
+        background: #ff69b4;
+        border: none;
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .shayari-line {
+        font-size: 2em;
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      .hearts {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .heart {
+        position: absolute;
+        font-size: 24px;
+        animation: float 6s infinite;
+        color: white;
+      }
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+        }
+        100% {
+          transform: translateY(-100vh) rotate(720deg);
+        }
+      }
+      footer {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        font-size: 1em;
+        color: #fff0f5;
+      }
+    </style>
+  </head>
+  <body>
+    <audio id="bgMusic" autoplay loop hidden>
+      <source src="romantic.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <div id="entryBox">
+      <h2>Enter your name to unlock ❤️</h2>
+      <input type="text" id="nameInput" placeholder="Your Name" />
+      <button onclick="checkName()">Enter</button>
+    </div>
+    <div id="shayariBox" style="display: none">
+      <h1 class="shayari-line" style="animation-delay: 0s">
+        Meri nazar se kabhi,
+      </h1>
+      <h1 class="shayari-line" style="animation-delay: 2s">khud ko dekhna,</h1>
+      <h1 class="shayari-line" style="animation-delay: 4s">
+        Tum khud hi khud par,
+      </h1>
+      <h1 class="shayari-line" style="animation-delay: 6s">Fida ho jaoge.❤️</h1>
+    </div>
+    <div class="hearts" id="hearts"></div>
+    <footer>Made with ❤️ by ABHISHEK TYAGI</footer>
+    <script>
+      function checkName() {
+        const input = document
+          .getElementById("nameInput")
+          .value.trim()
+          .toUpperCase();
+        if (input === "MAHEK TYAGI") {
+          document.getElementById("entryBox").style.display = "none";
+          document.getElementById("shayariBox").style.display = "block";
+          document.getElementById("bgMusic").play();
+          startHearts();
+        } else {
+          alert("Only for Mahek Tyagi 💖");
+        }
+      }
+
+      function startHearts() {
+        const heartContainer = document.getElementById("hearts");
+        setInterval(() => {
+          const heart = document.createElement("div");
+          heart.classList.add("heart");
+          heart.textContent = "❤️";
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.fontSize = Math.random() * 20 + 20 + "px";
+          heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+          heartContainer.appendChild(heart);
+          setTimeout(() => heart.remove(), 6000);
+        }, 300);
+      }
+    </script>
+  </body>
+</html>
